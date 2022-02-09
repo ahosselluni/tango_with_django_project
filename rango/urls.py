@@ -14,5 +14,6 @@ urlpatterns = [
     path('add_category/', views.add_category, name='add_category'),
     path('register/', views.register, name='register'),
     path('login/', views.user_login, name='login'),
+    path('restricted/', views.restricted, name='restricted'),
 
 ]

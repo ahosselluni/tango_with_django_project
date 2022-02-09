@@ -4,6 +4,7 @@ from rango.models import Category, Page
 from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 from django.urls import reverse
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -119,3 +120,7 @@ def user_login(request):
             return HttpResponse("Invalid login details supplied.")
     else:
         return render(request, 'rango/login.html')
+
+@login_required
+def restricted(request):
+    return HttpResponse("Since you're logged in, you can see this text!")
