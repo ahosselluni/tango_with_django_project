@@ -18,7 +18,6 @@ def index(request):
     context_dict['pages'] = pages_list
     
     visitor_cookie_handler(request)
-    context_dict['visits'] = request.session['visits']
 
     response = render(request, 'rango/index.html', context=context_dict)
     return response
@@ -26,7 +25,8 @@ def index(request):
 def about(request):
     context_dict = {}
 
-    
+    visitor_cookie_handler(request)
+    context_dict['visits'] = request.session['visits']
 
     return render(request, 'rango/about.html', context = context_dict)
     
